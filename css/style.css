@@ -1,0 +1,80 @@
+
+/* --   BODY    -- */
+body {
+    width: 100%; /* Le site occupera 100% de la largeur */
+    font-family: 'cursive', sans-serif; /* Définition de la police Google Font */
+}
+
+/* -------------------- */
+/* ==     HEADER        */
+/* -------------------- */
+header {
+    display: flex; /* Rends les éléments flexibles */
+    align-items: center; /* Centre verticalement le logo et le titre */
+    color: #fff; /* Lcontainer-slider logo et le titre de couleur blanche */
+}
+
+header h1 {
+    padding: 21px 0;
+    font-size: 3vh; /* Taille du titre */
+}
+
+header span.fa {
+    font-size: 3em; /* Taille du logo */
+    display: block;
+}
+
+a {
+    text-decoration: none;
+}
+
+.fa .fa-question-circle {
+    font-size: 24px;
+    line-height: 36px;
+    text-decoration: none;
+    text-align: center;
+    padding: 15px 0;
+}
+
+.popover__wrapper {
+    position: relative;
+    margin-top: 1.5rem;
+    display: inline-block;
+}
+.popover__content {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    left: -150px;
+    transform: translate(0, 10px);
+    background-color: #ffffff;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px 5px rgba(0, 0, 0, 0.26);
+    width: auto;
+}
+.popover__content:before {
+    position: absolute;
+    z-index: -1;
+    content: "";
+    right: calc(50% - 10px);
+    top: -8px;
+    border-style: solid;
+    border-width: 0 10px 10px 10px;
+    border-color: transparent transparent #ffffff transparent;
+    transition-duration: 0.3s;
+    transition-property: transform;
+}
+.popover__wrapper:hover .popover__content {
+    z-index: 10;
+    opacity: 1;
+    visibility: visible;
+    transform: translate(0, -20px);
+    transition: all 0.5s cubic-bezier(0.75, -0.02, 0.2, 0.97);
+}
+.popover__message {
+    text-align: center;
+}
+
+.card{
+    border-radius: 50%;
+}

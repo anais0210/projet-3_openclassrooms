@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta name="description" content="Vélib Marseille">
+    <meta name="author" content="Sparesotto Anais">
+
+    <title>Velib Marseile</title>
+
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+          rel="stylesheet">
+
+    <link href="css/grayscale.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/maps.css" rel="stylesheet">
+    <link href="css/canvas.css" rel="stylesheet">
+    <link href="css/reservation.css" rel="stylesheet">
+    <link href="css/diaporama.css" rel="stylesheet">
+
+    <link rel="icon" type="image/png" href="images/marqueurs/cycling.png"/>
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">Location de Vélib'</a>
+        <span class="fa fa-bicycle"></span>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                aria-label="Toggle navigation">
+            Menu
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#about">Réservation</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- Header -->
+<header class="masthead">
+    <div class="container d-flex h-100 align-items-center">
+        <div class="mx-auto text-center" id="navMain">
+            <h1 class="mx-auto my-0 text-uppercase">Velib'<br> Marseille</h1>
+            <h2 class="mx-auto mt-2 mb-5">Bienvenue sur le site de location de Vélib' de la ville de
+                Marseille</h2>
+            <a href="#about" class="btn btn-primary js-scroll-trigger">Débuter</a>
+        </div>
+    </div>
+</header>
+<!-- About Section -->
+<section id="about" class="about-section text-center">
+    <div id="container-diaporama">
+        <div class="popover__wrapper">
+            <a href="#">
+                <h2 class="fa fa-question-circle"></h2>
+            </a>
+            <div class="popover__content">
+                <p class="popover__message">Sélectionner une station de vélib et renseigner vos informations
+                    personelles</p>
+            </div>
+        </div>
+        <h2 class="text-white">Fonctionnement du service</h2>
+        <div id="left"><i class="fa fa-angle-left fa-2x" aria-hidden="true"></i></div>
+        <div id="right"><i class="fa fa-angle-right fa-2x" aria-hidden="true"></i></div>
+        <div id="container-slides">
+            <div class="slide" data-state="active">
+                <img src="images/diaporama/marseille-3807236_1920.jpg">
+                <figcaption>
+                    Réservez votre Vélib rapidement
+                </figcaption>
+            </div>
+            <div class="slide">
+                <img src="images/diaporama/1.png">
+                <figcaption>
+                    Choisissez votre station sur la carte
+                </figcaption>
+            </div>
+            <div class="slide">
+                <img src="images/diaporama/2.png">
+                <figcaption>
+                    Vérifier l'état de la station ainsi que le nombre de vélos disponibles et cliquez sur le
+                    bouton de réservation
+                </figcaption>
+            </div>
+            <div class="slide">
+                <img src="images/diaporama/3.png">
+                <figcaption>
+                    Renseignez votre nom et votre prénom pour pouvoir réserver votre vélib, et n'oubliez pas de
+                    signer
+                </figcaption>
+            </div>
+            <div class="slide">
+                <img src="images/diaporama/4.png">
+                <figcaption>
+                    Votre réservation sera valide durant 20 minutes. Pas de panique vous pouvez annuler la
+                    réservation et choisir une autre station.
+                </figcaption>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div id="container-reservation">
+        <header id="reservation-header">
+            <span class="fa fa-compass"></span>
+            <h1>Louer votre Vélib'</h1>
+        </header>
+        <article class="row justify-content-around" id="information">
+            <div class="col-sm-6" id="map"></div>
+            <div class="col-sm-4" id="infoStation">
+                <h1 id="information-station-title">Sélectionner une Station :</h1>
+                <ul id="liste-info">
+                    <li><span class="font-weight-bold">Nom :</span> <span
+                            id="nom-station"> <!-- Nom inséré en Javascript --> </span></li>
+                    <li><span class="font-weight-bold">Adresse : </span> <span id="adresse-station"> <!-- Adresse insérer en Javascript --> </span>
+                    </li>
+                    <li><span class="font-weight-bold">Etat :</span> <span id="etat-station"> <!-- État inséré en Javascript --> </span>
+                    </li>
+                    <li><span class="font-weight-bold">Vélos disponibles : </span><span id="velo-dispo"> <!-- Nombre inséré en Javascript --> </span>
+                    </li>
+                    <li><span class="font-weight-bold">Points d'attache disponibles : </span><span id="attache-dispo"> <!-- Nombre inséré en Javascript --> </span>
+                    </li>
+                </ul>
+                <button type="button" id="boutton-reservation" class="btn btn-primary js-scroll-trigger"
+                        data-toggle="modal"
+                        data-target="#reservation" disabled>Réserver
+                </button>
+                <p id="text-reservation"></p>
+                <p id="message-erreur" class="message" hidden>La réservation est impossible à cette station</p>
+            </div>
+        </article>
+    </div>
+</section>
+<div class="modal fade" id="reservation" tabindex="-1" role="dialog" data-toggle="false" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Réserver Votre Vélib'</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">x</span>
+                </button>
+            </div>
+            <form role="form" id="form-reservation">
+                <div class="modal-body text-center">
+                    <p>Saisissez votre Nom et votre Prénom pour réserver votre vélib</p>
+                    <div class="form-group">
+                        <input name="lastname" type="text" class="form-control" id="lastname"
+                               placeholder="Nom*">
+                    </div>
+                    <div class="form-group">
+                        <input name="firstname" type="text" class="form-control" id="firstname"
+                               placeholder="Prénom*">
+                    </div>
+                    <div id="valid-form">
+                        <p id="signature">Signature* :</p>
+                        <canvas id="canvas"></canvas>
+                        <div id="form-error" class="font-weight-bold"></div>
+                        <!-- Zone des boutons de la fenêtre d'informations -->
+                        <div class="modal-footer text-center">
+                            <div id="boutons-formulaire">
+                                <!-- Bouton pour Effacer le contenu du Canvas -->
+                                <input type="button" value="Effacer" id="effacer" class="btn btn-primary">
+                                <!-- Bouton Valider -->
+                                <input type="submit" id="bouton_valider" value="Valider"
+                                       class="btn btn-primary">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div id="reservation-success" hidden>
+                <p class="font-weight-bold"> Votre réservation a été validée !</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Contact Section -->
+<section id="contact" class="contact-section bg-black">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 mb-3 mb-md-0">
+                <div class="card py-4 h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-map-marked-alt text-primary mb-2"></i>
+                        <h4 class="text-uppercase m-0">Adresse</h4>
+                        <hr class="my-4">
+                        <div class="small text-black-50">4923 Place de la tour 13010 Marseille</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3 mb-md-0">
+                <div class="card py-4 h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-envelope text-primary mb-2"></i>
+                        <h4 class="text-uppercase m-0">Email</h4>
+                        <hr class="my-4">
+                        <div class="small text-black-50">
+                            <a href="#">velib@marseille.com</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3 mb-md-0">
+                <div class="card py-4 h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-mobile-alt text-primary mb-2"></i>
+                        <h4 class="text-uppercase m-0">Téléphone</h4>
+                        <hr class="my-4">
+                        <div class="small text-black-50">04-94-95-96-97</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="social d-flex justify-content-center">
+            <a href="#" class="mx-2">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="mx-2">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="mx-2">
+                <i class="fab fa-github"></i>
+            </a>
+        </div>
+    </div>
+</section>
+<!-- Footer -->
+<footer class="bg-black small text-center text-white-50">
+    <div class="container">
+        Copyright &copy; Velib Marseille Projet de formation OpenClassRooms
+    </div>
+</footer>
+<div id="reservation-current">
+    <h3 id="header-information-reservation">Informations sur la réservation <img id="icon" src="images/icon.png"></img>
+    </h3>
+    <div id="reservation-current-body" hidden="true">
+        <p id="empty-reservation">Aucune réservation en cours</p>
+        <p id="reservation-current-valid" hidden><span id="reservation-current-firstname"></span>
+            <span id="reservation-current-lastname"></span> a resèrvé un vélo à
+            <span id="reservation-current-station"></span> pendant <span id="timer"></span>.
+            <input type="button" value="Annuler" id="annuler" class="btn btn-primary">
+        </p>
+    </div>
+</div>
+
+
+<!-- Fichiers JavaScripts -->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbHYA-4C6yKpDeeTanxrlI4IZTUKU_rTw" async
+        defer></script>
+<script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
+</script>
+<script src="js/map.js"></script>
+<script src="js/reservation.js"></script>
+<script src="js/canvas.js"></script>
+<script src="js/diaporama.js"></script>
+<script src="js/grayscale.min.js"></script>
+</section>
+</body>
+
+</html>

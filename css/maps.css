@@ -1,0 +1,22 @@
+#information{
+    height: 550px;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    width: 100%;
+}
+#map{
+    min-height: 250px;
+    border-radius: 50%;
+}
+
+#information-station-title{
+    text-align:center;
+    color: white  ;
+}
+
+#liste-info{
+    list-style: none;
+    color: white;
+}
+
+
