@@ -1,5 +1,6 @@
-.signature {
-    color: #64a19d;
+message-erreur.signature {
+    color: white;
+;
 }
 
 .btn-primary.disabled, .btn-primary:disabled{

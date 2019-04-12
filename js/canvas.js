@@ -1,5 +1,5 @@
 /* ----------------------------------------------------------------------------------------------- */
-/* --   Ce fichier rassemble les méthodes pour pouvoir dessiner avec la souris dans le canvas   -- */
+/* --                                   Canvas                                                  -- */
 /* ----------------------------------------------------------------------------------------------- */
 
 var checkSignature = false;
@@ -10,7 +10,7 @@ var CreateCanvas = function () {
     this.mouseY = 0
     this.lastX = -1 // Variables pour la précédente position de la souris
     this.lastY = -1
-    this.mouseDown = false // Variable pour vérifer que le boutton de la souris soit appuyée pour commencer à dessiner
+    this.mouseDown = false
     this.context = null
     const canvas = document.getElementById('canvas');
 
@@ -37,12 +37,12 @@ var CreateCanvas = function () {
     }
 
     this.getTouchPos = (e) => {
-         // Pour avoir la position du doigt (Pour smartphone et tablette)
+             // Pour avoir la position du doigt (Pour smartphone et tablette)
         if (e.touches) {
             if (e.touches.length == 1) {
                 const touch = e.touches[0];
-                this.touchX = touch.offsetX - touch.target.offsetLeft;
-                this.touchY = touch.offsetY - touch.target.offsetTop;
+                this.touchX = touch.pageX - touch.target;
+                this.touchY = touch.pageY - touch.target;
             }
         }
     }
@@ -64,20 +64,20 @@ var CreateCanvas = function () {
 
     this.draw = () => {
         canvas.addEventListener('mousedown',  (e) => {
-            this.mouseDown = true;                                      // Quand la bouton de la souris est down
+            this.mouseDown = true;                                      // Quand la bouton de la souris est cliquer
             this.getMousePos(e);                                        // On regarde sa position
             this.drawLine(this.mouseX, this.mouseY);    // On commence à dessiner
         }, false);
 
         canvas.addEventListener('mousemove',  (e) => {
             this.getMousePos(e);                                         // Quand la souris bouge
-            if (this.mouseDown === true) {                               // On regarde si le bouton est down
+            if (this.mouseDown === true) {                               // On regarde si le bouton est cliquer
                 this.drawLine(this.mouseX, this.mouseY); // Et s'il l'est on dessine
             }
         }, false);
 
-        window.addEventListener('mouseup',  () => {               // Quand le bouton de la souris n'est plus down
-            this.mouseDown = false;                                       // La souris n'est plus down
+        window.addEventListener('mouseup',  () => {               // Quand le bouton de la souris n'est plus clicquer
+            this.mouseDown = false;                                       // La souris n'est plus cliquer
             this.lastX = -1;                                             // La dernière position de la souris est -1 pour indiquer qu'il y a un nouveau chemin
             this.lastY = -1;
         }, false);

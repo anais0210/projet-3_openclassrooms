@@ -44,6 +44,7 @@ var Reservation = function (){
         cancelReservation();
     });
 
+    setInfoCustumer();
     displayIfExistReservation();
 
 //Afficher la réservation courante
@@ -132,6 +133,11 @@ var Reservation = function (){
         sessionStorage.removeItem('station');
         sessionStorage.removeItem('end-date');
         showEmptyReservation();
+    }
+    function setInfoCustumer () {
+        document.getElementById('firstname').value = getCurrentReservation().firstname;
+        document.getElementById('lastname').value = getCurrentReservation().lastname;
+
     }
 };
 

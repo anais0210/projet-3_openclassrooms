@@ -56,6 +56,15 @@ $(function () {
         diaporama.pauseSlider()
     });
 
+    document.getElementById('left').addEventListener('click', function(){
+        diaporama.prevSlide();
+    });
+
+    document.getElementById('right').addEventListener('click', function(){
+        diaporama.nextSlide();
+    });
+
+
     window.addEventListener("keydown", function (e) {
         if ($("input").is(":focus")) {
             // permet d'ecrire dans les inputs de la modal
